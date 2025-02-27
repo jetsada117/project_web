@@ -2,7 +2,7 @@
 
 function getConnection():mysqli
 {
-    $hostname = 'localhost';
+    $hostname = 'https://ac6f-223-206-218-52.ngrok-free.app';
     $dbName = 'project_web';
     $username = 'project_web';
     $password = '123***';
