@@ -1,0 +1,255 @@
+body {
+    background-color: #f7ebd2;
+    font-family: 'Prompt', sans-serif;
+}
+
+body {
+    background-color: #f7ebd2;
+}
+
+
+.navbar {
+    background-color: #d7e8f5 !important;
+}
+
+.navbar-nav .nav-link {
+    color: black;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 900px;
+}
+
+.container-custom {
+    padding: 20px;
+}
+
+.btn-back {
+    background-color: pink;
+    color: black;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+.container-custom9 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.search-box {
+    border-radius: 10px;
+    padding: 5px 10px;
+    width: 200px;
+    border: 1px solid black;
+    font-size: 14px;
+}
+
+.table-custom {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.table-box {
+    background-color: #eef3f9;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.rating-box {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.box11 {
+    background-color: #d7e8f5;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.box {
+    background-color: #d7e8f5;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.rating-box h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.rating-box label {
+    font-weight: bold;
+}
+
+.rating-box .form-check {
+    margin-bottom: 10px;
+}
+
+.comment-box11 {
+    background-color: #d7e8f5;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: left;
+    font-size: 18px;
+    color: black;
+}
+
+.comment-box {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.comment-box textarea {
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.btn-submit {
+    background-color: #d7e8f5;
+    color: black;
+    font-weight: bold;
+    border: 2px solid black;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.image-box {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-box img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.btn-custom {
+    border: 2px solid black;
+    font-weight: bold;
+}
+
+.btn-add {
+    background-color: #d7e8f5;
+    color: black;
+}
+
+.btn-delete {
+    background-color: #f79ac1;
+    color: black;
+}
+
+.title-banner {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    background: white;
+    display: inline-block;
+    padding: 5px 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-back {
+    background-color: #f79ac1;
+    color: black;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 8px 20px;
+    border: 2px solid black;
+    margin-top: 20px;
+}
+
+.decor {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 150px;
+}
+.editable-area {
+    min-height: 350px;
+    border: 1px dashed #999; 
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+.header-title {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.header-banner {
+    background: white;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 5px;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.card {
+    background-color: #dbe7f0;
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+    height: 500px;
+}
+
+.row {
+    gap: 30px;
+    
+}
+
+.col-md-5 img {
+    margin-right: 20px;
+    
+}
+
+
+
+
+
+.btn-primary {
+    background-color: #bcd4eb;
+    border: none;
+    color: black;
+}
+
+.btn-danger {
+    background-color: #f9a5c3;
+    border: none;
+}
