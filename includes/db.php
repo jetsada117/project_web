@@ -2,7 +2,7 @@
 
 function getConnection():mysqli
 {
-    $hostname = 'https://ac6f-223-206-218-52.ngrok-free.app';
+    $hostname = 'localhost';
     $dbName = 'project_web';
     $username = 'project_web';
     $password = '123***';
@@ -10,11 +10,11 @@ function getConnection():mysqli
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    else
-    {
-        echo 'Connection completed';
-    }
     return $conn;
 }
 
 require_once DATABASE_DIR . '/users.php';
+require_once DATABASE_DIR . '/authen.php';
+require_once DATABASE_DIR . '/events.php';
+require_once DATABASE_DIR . '/enroll.php';
+?>
