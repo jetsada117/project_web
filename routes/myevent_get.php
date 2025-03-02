@@ -1,5 +1,5 @@
 <?php
-$uid = (int)$_GET['uid'];
+$uid = $_SESSION['uid'];
 
 if (isset($uid) && is_numeric($uid)) {
     $result = getAllEventById($uid); 

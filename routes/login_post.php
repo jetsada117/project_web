@@ -1,12 +1,15 @@
 <?php
 $email = $_POST['email'];
+$email = trim($email);
 $password = $_POST['password'];
+$password = trim($password);
 $result = login($email, $password);
 if($result){
     $unix_timestamp = time();
     $_SESSION['timestamp'] = $unix_timestamp;
     $_SESSION['uid'] = $result['uid'];
-    renderView('home_get', $result);
+    $events = getAllEvents();
+    renderView('events_get', ['events' => $events]);
 }
 else
 {

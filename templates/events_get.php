@@ -1,22 +1,26 @@
 <?php
 $events = $data['events'];
 ?>
-<h2>Events List</h2>
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Category</th>
-        <th>Event Date</th>
-        <th>Start Time</th>
-    </tr>
-    <?php while ($row = $events->fetch_assoc()): ?>
-        <tr>
-            <td><?php echo htmlspecialchars($row['name']); ?></td>
-            <td><?php echo htmlspecialchars($row['description']); ?></td>
-            <td><?php echo htmlspecialchars($row['category']); ?></td>
-            <td><?php echo htmlspecialchars($row['event_date']); ?></td>
-            <td><?php echo htmlspecialchars($row['start_time']); ?></td>
-        </tr>
-    <?php endwhile; ?>
-</table>
+<div class="container py-4">
+    <div class="d-flex justify-content-center align-items-center">
+        <h2 class="p-3 bg-white rounded-4 shadow my-3">หน้ากิจกรรม</h2>
+    </div>
+    <div class="scroll-container">
+        <?php
+        while ($row = $events->fetch_assoc()): ?>
+            <div class="col-md-3 my-3">
+                <div class="activity-cardAct">
+                    <div class="activity-cardAct1">
+                        <img src="<?php echo htmlspecialchars($row['image']); ?>">
+                        <h5 class="mt-2"><?php echo htmlspecialchars($row['name']); ?></h5>
+                        <p class="text-wrap">
+                            <?php echo nl2br(htmlspecialchars($row['description'])); ?><br>
+                            วันที่: <?php echo date("d F Y", strtotime($row['event_date'])); ?><br>
+                        </p>
+                        <button class="btn btn-join">เข้าร่วม</button>
+                    </div>
+                </div>
+            </div>
+        <?php endwhile; ?>
+    </div>
+</div>
