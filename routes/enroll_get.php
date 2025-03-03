@@ -4,7 +4,12 @@ $eid = $_GET['eid'];
 
 $result = insertEnroll($uid, $eid);
 
-if($result){
+if($result) {
+    $event = getEventWithOutId($uid);
+    renderView('events_get', ['events' => $event]);
+}
+else
+{
     $event = getEventWithOutId($uid);
     renderView('events_get', ['events' => $event]);
 }

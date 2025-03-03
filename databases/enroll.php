@@ -4,12 +4,24 @@ function insertEnroll(int $uid, int $eid): bool
 {
     $conn = getConnection();
     $status = 'pending';
+
+    $check = "SELECT * FROM enroll WHERE uid = ? AND eid = ?";
+    $stmt = $conn->prepare($check);
+    $stmt->bind_param("ii", $uid, $eid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        return false;
+    }
+
     $sql = "INSERT INTO enroll (uid, eid, status) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("iis", $uid, $eid, $status);
     $stmt->execute();
 
-    if ($stmt->affected_rows > 0) {
+    if ($stmt->affected_rows > 0)
+    {
         return true;
     } else {
         return false;
