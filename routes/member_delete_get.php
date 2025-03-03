@@ -2,7 +2,7 @@
 $uid = $_GET['uid'];
 $eid = $_GET['eid'];
 
-$result = cancelEnroll($uid, $eid);
+$result = deleteEnroll($uid, $eid);
 
 if ($result) {
     $result = getMemberOfEvent($eid);

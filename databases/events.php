@@ -11,10 +11,13 @@ function getAllEvents(): mysqli_result|bool
 function getEventWithOutId(int $uid): mysqli_result|bool
 {
     $conn = getConnection();
-    $sql = "SELECT DISTINCT e.* 
+    $sql = "SELECT DISTINCT e.*
             FROM events e
-            LEFT JOIN enroll en ON e.eid = en.eid
-            WHERE (en.uid IS NULL OR en.uid != ?) 
+            WHERE NOT EXISTS (
+            SELECT 1 
+            FROM enroll en 
+            WHERE en.eid = e.eid 
+            AND en.uid = ?)
             AND e.created_by != ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ii", $uid, $uid);

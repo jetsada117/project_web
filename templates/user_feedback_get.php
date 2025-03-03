@@ -1,4 +1,4 @@
-<div class="container container-customscore">
+<form class="container container-customscore">
     <div class="rating-boxscore">
         <h2>ให้คะเเนนกิจกรรม</h2>
         <div class="mb-3">
@@ -51,10 +51,10 @@
 
     <div class="comment-boxscore">
         <h2>แสดงความคิดเห็นของคุณ...</h2>
-        <textarea rows="4" placeholder="เขียนความคิดเห็นของคุณที่นี่..."></textarea>
+        <input type="text" class="form form-control">
     </div>
 
     <div class="text-center">
-        <button class="btn btn-submitscore">ส่ง</button>
+        <button type="submit" class="btn btn-submitscore">ส่ง</button>
     </div>
-</div>
+</form>

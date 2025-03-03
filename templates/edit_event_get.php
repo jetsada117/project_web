@@ -22,8 +22,12 @@ $event = $data['event']->fetch_assoc();
                 <input type="date" class="form-control" name="event_date" value="<?php echo htmlspecialchars($event['event_date']) ?>" required>
             </div>
             <div class="mb-3">
-                <label class="form-label">ประเภท</label>
-                <input type="text" class="form-control" name="category" value="<?php echo htmlspecialchars($event['category']) ?>" required>
+                <label class="form-label me-5">ประเภท</label>
+                <select class="form-selectedit my-3" name="category">
+                    <option value="การออกกำลังกาย" <?php echo $event['category'] ?> ? 'selected' : ''; ?>>ออกกำลังกาย</option>
+                    <option value="การแข่งขัน" <?php echo $event['category'] ?> ? 'selected' : ''; ?>>การแข่งขัน</option>
+                    <option value="การท่องเที่ยว" <?php echo $event['category'] ?> ? 'selected' : ''; ?>>การท่องเที่ยว</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label class="form-label">เวลา</label>

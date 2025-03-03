@@ -68,11 +68,11 @@ function getRequestEnrollAllEvents(int $uid): mysqli_result|bool
 {
     $conn = getConnection();
     $sql = "SELECT e.status, e.eid, u.uid, u.user_name, u.email, u.phone, u.gender, 
-    ev.name, TIMESTAMPDIFF(YEAR, u.date_of_birth, CURDATE()) AS age
-    FROM enroll e
-    JOIN users u ON e.uid = u.uid
-    JOIN events ev ON e.eid = ev.eid
-    WHERE e.status = 'pending' AND ev.created_by = ?";
+            ev.name, TIMESTAMPDIFF(YEAR, u.date_of_birth, CURDATE()) AS age
+            FROM enroll e
+            JOIN users u ON e.uid = u.uid
+            JOIN events ev ON e.eid = ev.eid
+            WHERE e.status = 'pending' AND ev.created_by = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $uid);
     $stmt->execute();
@@ -80,7 +80,7 @@ function getRequestEnrollAllEvents(int $uid): mysqli_result|bool
     return $result;
 }
 
-function cancelEnroll(int $uid, int $eid)
+function deleteEnroll(int $uid, int $eid)
 {
     $conn = getConnection();
     $sql = "DELETE FROM enroll WHERE uid =? AND eid =?";
@@ -155,3 +155,17 @@ function getTopFeedbackEventByUser($uid): mysqli_result|bool
     return $result;
 }
 
+function getHistoryEnroll($uid)
+{
+    $conn = getConnection();
+    $sql = "SELECT e.* FROM events e
+            JOIN enroll en ON e.eid = en.eid
+            WHERE en.uid =?
+            AND en.status = 'accepted'
+            ORDER BY en.enroll_date DESC";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $uid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result;
+}

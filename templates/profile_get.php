@@ -9,10 +9,10 @@
         <p><strong>วันเกิด: <?php echo date("d F Y", strtotime($user['date_of_birth'])); ?></strong></p>
         <p><strong>เบอร์โทร: <?php echo htmlspecialchars($user['phone']); ?></strong></p>
         <p><strong>เพศ: <?php echo htmlspecialchars($user['gender']); ?></strong></p>
-        <a href="">
+        <a href="/history">
             <button class="btn-profile">การเข้าร่วม</button>
         </a>
-        <a href="">
+        <a href="/profile_edit">
             <button class="btn-profile">แก้ไขข้อมูล</button>
         </a>
         <a href="/logout">
