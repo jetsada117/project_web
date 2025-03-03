@@ -4,10 +4,10 @@ $event = $data['event']->fetch_assoc();
 
 <div class="container-customCreate">
     <div>
-        <img src="<?php echo htmlspecialchars($event['image']); ?>">
+        <img class="img-detail" src="<?php echo htmlspecialchars($event['image']); ?>">
     </div>
     <div class="content-boxCreate">
-        <h4 class="text-center">สร้างกิจกรรม</h4>
+        <h4 class="text-center">แก้ไขกิจกรรม</h4>
         <form action="/edit_event?eid=<?=$event['eid']?>" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label class="form-label">ชื่อกิจกรรม</label>
@@ -15,7 +15,7 @@ $event = $data['event']->fetch_assoc();
             </div>
             <div class="mb-3">
                 <label class="form-label">รายละเอียด</label>
-                <textarea class="form-control" name="description" rows="3" required><?php echo htmlspecialchars($event['description']) ?></textarea>
+                <textarea class="form-control" name="description" rows="3" required><?php echo htmlspecialchars($event['description'])?></textarea>
             </div>
             <div class="mb-3">
                 <label class="form-label">วันที่</label>

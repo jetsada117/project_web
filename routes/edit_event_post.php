@@ -13,8 +13,8 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
     $result = updateEventWithImage($name, $description, $category, $event_date, $start_time, $image_tmp, $image_name, $eid);
 
     if ($result) {
-        $events = getAllEvents();
-
-        renderView('events_get', ['events' => $events]);
+        $uid = $_SESSION['uid'];
+        $event = getEventWithOutId($uid);
+        renderView('events_get', ['events' => $event]);
     }
 }

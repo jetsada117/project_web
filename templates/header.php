@@ -14,10 +14,11 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="/events">หน้าแรก</a></li>
-                <li class="nav-item"><a class="nav-link" href="/create_event">หน้าสร้างกิจกรรม</a></li>
-                <li class="nav-item"><a class="nav-link active" href="/myevent">กิจกรรมของคุณ</a></li>
-                <li class="nav-item"><a class="nav-link active" href="/request_enroll">คำขอ</a></li>
+                <?php if (isset($_SESSION['timestamp'])) { ?>
+                    <li class="nav-item"><a class="nav-link" href="/events">หน้าแรก</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/create_event">หน้าสร้างกิจกรรม</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/myevent">กิจกรรมของคุณ</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/request_enroll">คำขอ</a></li>
             </ul>
             <form class="d-flex ms-auto">
                 <input class="form-control me-2" type="search" placeholder="SEARCH">
@@ -26,10 +27,15 @@
                 </button>
             </form>
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="/user_data">ข้อมูลผู้ใช้</a></li>
+                <li class="nav-item"><a class="nav-link" href="/profile">ข้อมูลผู้ใช้</a></li>
             </ul>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <?php } else { ?>
+            <li class="nav-item"><a class="nav-link active" href="/login">เข้าสู่ระบบ</a></li>
+            <li class="nav-item"><a class="nav-link active" href="/register">ลงทะเบียน</a></li>
+            </ul>
+        <?php } ?>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         </div>
     </nav>

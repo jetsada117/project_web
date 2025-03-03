@@ -8,8 +8,8 @@ if($result){
     $unix_timestamp = time();
     $_SESSION['timestamp'] = $unix_timestamp;
     $_SESSION['uid'] = $result['uid'];
-    $events = getAllEvents();
-    renderView('events_get', ['events' => $events]);
+    $event = getEventWithOutId($_SESSION['uid']);
+    renderView('events_get', ['events' => $event]);
 }
 else
 {

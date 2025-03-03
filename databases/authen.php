@@ -47,8 +47,6 @@ function insertUserWithImagePath($user_name, $email, $password, $phone, $gender,
     move_uploaded_file($image_tmp, $upload_path . $new_filename);
     $image_path = $upload_path . $new_filename;
 
-    var_dump($image_tmp, $image_name, $upload_path, $image_path);
-
     $stmt = $conn->prepare("INSERT INTO users (user_name, email, password, phone, gender, date_of_birth, image) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     $stmt->bind_param("sssssss", $user_name, $email, $hashed_password, $phone, $gender, $dob, $image_path);
@@ -64,4 +62,5 @@ function insertUserWithImagePath($user_name, $email, $password, $phone, $gender,
 function logout(): void
 {
     unset($_SESSION['timestamp']);
+    unset($_SESSION['uid']);
 }

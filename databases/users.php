@@ -1,9 +1,12 @@
 <?php
 
-function getUsers(): mysqli_result|bool
+function getUserById(int $uid): mysqli_result|bool
 {
     $conn = getConnection();
-    $sql = 'select * from students';
-    $result = $conn->query($sql);
+    $sql = "SELECT * FROM users WHERE uid =?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $uid);
+    $stmt->execute();
+    $result = $stmt->get_result();
     return $result;
 }

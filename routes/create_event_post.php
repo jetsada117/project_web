@@ -13,9 +13,8 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
     $result = createEvent($name, $description, $category, $event_date, $start_time, $image_tmp, $image_name, $uid);
 
     if ($result) {
-        $events = getAllEvents();
-
-        renderView('events_get', ['events' => $events]);
+        $event = getEventWithOutId($uid);
+        renderView('events_get', ['events' => $event]);
     } else {
         echo "เกิดข้อผิดพลาดในการสร้างอีเวนต์!";
     }

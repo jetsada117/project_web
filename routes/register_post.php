@@ -6,7 +6,6 @@ $phone = $_POST['phone'];
 $gender = $_POST['gender'];
 $dob = $_POST['dob'];
 
-// การใช้งาน
 if(isset($_FILES['user_image']) && $_FILES['user_image']['error'] == 0) {
     $image_tmp = $_FILES['user_image']['tmp_name'];
     $image_name = $_FILES['user_image']['name'];

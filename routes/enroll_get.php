@@ -1,11 +1,10 @@
 <?php
-$uid = $_GET['uid'];
+$uid = $_SESSION['uid'];
 $eid = $_GET['eid'];
 
 $result = insertEnroll($uid, $eid);
 
 if($result){
-    $event = getAllEvents();
-
+    $event = getEventWithOutId($uid);
     renderView('events_get', ['events' => $event]);
 }

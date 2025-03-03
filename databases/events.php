@@ -8,10 +8,25 @@ function getAllEvents(): mysqli_result|bool
     return $result;
 }
 
+function getEventWithOutId(int $uid): mysqli_result|bool
+{
+    $conn = getConnection();
+    $sql = "SELECT DISTINCT e.* 
+            FROM events e
+            LEFT JOIN enroll en ON e.eid = en.eid
+            WHERE (en.uid IS NULL OR en.uid != ?) 
+            AND e.created_by != ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $uid, $uid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result;
+}
+
 function getEventById(int $eid): mysqli_result|bool
 {
     $conn = getConnection();
-    $sql = "SELECT * FROM events WHERE eid =?";
+    $sql = "SELECT * FROM events WHERE eid = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $eid);
     $stmt->execute();
@@ -22,7 +37,7 @@ function getEventById(int $eid): mysqli_result|bool
 function getAllEventById(int $id): mysqli_result|bool
 {
     $conn = getConnection();
-    $sql = "SELECT * FROM events WHERE created_by = ?";
+    $sql = "SELECT DISTINCT * FROM events WHERE created_by = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
     $stmt->execute();
