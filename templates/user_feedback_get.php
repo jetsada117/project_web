@@ -1,10 +1,13 @@
-<form class="container container-customscore">
+<?php
+$feedback = $data['ufeedback']->fetch_assoc();
+?>
+<form class="container container-customscore" action="/user_feedback?eid=<?= $feedback['eid']?>" method="post" enctype="multipart/form-data">
     <div class="rating-boxscore">
-        <h2>ให้คะเเนนกิจกรรม</h2>
+        <h2>ให้คะแนนกิจกรรม</h2>
         <div class="mb-3">
-            <label>1. ความเหมาะสมของกิจกรรม</label>
+            <label for="suitability">1. ความเหมาะสมของกิจกรรม</label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="suitability" id="suitability5" value="5">
+                <input class="form-check-input" type="radio" name="suitability" id="suitability5" value="5" required>
                 <label class="form-check-label" for="suitability5">5</label>
             </div>
             <div class="form-check">
@@ -25,9 +28,9 @@
             </div>
         </div>
         <div class="mb-3">
-            <label>2. ระยะเวลาของกิจกรรม</label>
+            <label for="duration">2. ระยะเวลาของกิจกรรม</label>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="duration" id="duration5" value="5">
+                <input class="form-check-input" type="radio" name="duration" id="duration5" value="5" required>
                 <label class="form-check-label" for="duration5">5</label>
             </div>
             <div class="form-check">
@@ -48,13 +51,11 @@
             </div>
         </div>
     </div>
-
     <div class="comment-boxscore">
         <h2>แสดงความคิดเห็นของคุณ...</h2>
-        <input type="text" class="form form-control">
+        <textarea name="comment" class="form-control" rows="4" placeholder="กรอกความคิดเห็นของคุณที่นี่..."></textarea>
     </div>
-
-    <div class="text-center">
-        <button type="submit" class="btn btn-submitscore">ส่ง</button>
+    <div class="text-center mt-3">
+        <button type="submit" class="btn btn-primary">ส่ง</button>
     </div>
 </form>

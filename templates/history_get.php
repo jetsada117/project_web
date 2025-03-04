@@ -18,7 +18,7 @@ $activities = $data['history'];
                     <td><?php echo htmlspecialchars($activity['name']); ?></td>
                     <td><?php echo htmlspecialchars($activity['event_date']); ?></td>
                     <td>
-                        <a href="/user_feedback">
+                        <a href="/user_feedback?eid=<?= $activity['eid']?>">
                             <button class="btn btn-danger">feedback</button>
                         </a>
                         <a href="/history_delete?eid=<?= $activity['eid']?>">

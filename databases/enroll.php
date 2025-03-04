@@ -106,7 +106,7 @@ function getAllFeedbackEvent(int $eid): mysqli_result|bool
     return $result;
 }
 
-function updataFeedbackEvent(String $feedback, int $eid, int $uid): mysqli_result|bool
+function updataFeedbackEvent(String $feedback, int $eid, int $uid): bool
 {
     $conn = getConnection();
     $sql = "UPDATE enroll SET feedback = ? WHERE uid = ? AND eid = ?";
@@ -168,4 +168,27 @@ function getHistoryEnroll($uid)
     $stmt->execute();
     $result = $stmt->get_result();
     return $result;
+}
+
+function getUserFeedbackById(int $uid,int $eid): mysqli_result|bool
+{
+    $conn = getConnection();
+    $sql = "SELECT * FROM enroll WHERE uid =? AND eid =?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $uid, $eid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    return $result;
+}
+
+function updateUserFeedback(string $feedback, float $rating, int $uid, int $eid): bool
+{
+    $conn = getConnection();
+    $sql = "UPDATE enroll SET feedback = ?, rating = ? WHERE uid = ? AND eid = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sdii", $feedback, $rating, $uid, $eid);
+    $stmt->execute();
+
+    return $stmt->affected_rows > 0;
 }
