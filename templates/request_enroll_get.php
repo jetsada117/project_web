@@ -11,10 +11,10 @@ $enrollments = $data['requests']->fetch_all(MYSQLI_ASSOC);
         if (count($enrollments) > 0) {
             foreach ($enrollments as $row): ?>
                 <div class="alert alert-light">
-                    <span><?php echo htmlspecialchars($row['user_name']) . ' อายุ ' . htmlspecialchars($row['age']) . ' เพศ ' . htmlspecialchars($row['gender']) ?></span>
+                    <span><?php echo htmlspecialchars($row['user_name']) . ' อายุ ' . htmlspecialchars($row['age']) . ' เพศ ' . htmlspecialchars($row['gender'])  . ' กิจกรรม '. htmlspecialchars($row['name'])?></span>
                     <div>
-                        <a class="btn btn-acceptwarm" href="/request_enroll?action=accept&uid=<?= $row['uid'] ?>&eid=<?= $row['eid'] ?>">ยอมรับ</a>
-                        <a class="btn btn-declinewarm" href="/request_enroll?action=declined&uid=<?= $row['uid'] ?>&eid=<?= $row['eid'] ?>">ปฏิเสธ</a>
+                        <a class="btn btn-acceptwarm" href="/request_enroll?action=accept&uid=<?= $row['uid'] ?>&eid=<?= $row['eid'] ?>" onclick="return confirmSubmission()">ยอมรับ</a>
+                        <a class="btn btn-declinewarm" href="/request_enroll?action=declined&uid=<?= $row['uid'] ?>&eid=<?= $row['eid'] ?>" onclick="return confirmSubmission()">ปฏิเสธ</a>
                     </div>
                 </div>
             <?php endforeach; ?>

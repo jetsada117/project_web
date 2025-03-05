@@ -19,7 +19,7 @@ $events = $data['events'];
                                 วันที่: <?php echo date("d F Y", strtotime($row['event_date'])); ?><br>
                             </p>
                             <a href="/enroll?eid=<?= $row['eid']; ?>">
-                                <button class="btn btn-join">เข้าร่วม</button>
+                                <button class="btn btn-join" onclick="return confirmSubmission()">เข้าร่วม</button>
                             </a>
                         </div>
                     </a>

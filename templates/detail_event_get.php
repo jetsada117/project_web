@@ -21,10 +21,10 @@ $event = $data['event']->fetch_assoc();
     </div>
     <div class="mt-3 d-flex justify-content-center gap-3">
         <a href="/enroll?eid=<?= $event['eid'];?>">
-            <button class="btn btn-primary btn-custom">เข้าร่วม</button>
+            <button class="btn btn-primary btn-custom" onclick="return confirmSubmission()">เข้าร่วม</button>
         </a>
         <a href="/events">
-            <button class="btn btn-danger btn-custom">ยกเลิก</button>
+            <button class="btn btn-danger btn-custom" onclick="return confirmSubmission()">ยกเลิก</button>
         </a>
     </div>
 </div>

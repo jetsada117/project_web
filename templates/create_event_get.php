@@ -1,7 +1,7 @@
 <div class="container-customCreate">
     <div class="content-boxCreate">
         <h4 class="text-center">สร้างกิจกรรม</h4>
-        <form action="/create_event" method="POST" enctype="multipart/form-data">
+        <form action="/create_event" method="POST" enctype="multipart/form-data" onsubmit="return confirmSubmission()">
             <div class="mb-3">
                 <label class="form-label">ชื่อกิจกรรม</label>
                 <input type="text" class="form-control" name="name" required>

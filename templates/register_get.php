@@ -3,7 +3,7 @@
         <span class="edit-titleedit">Login</span>
     </div>
     <div class="form-containeredit">
-        <form action="/register" method="post" enctype="multipart/form-data">
+        <form action="/register" method="post" enctype="multipart/form-data" onsubmit="return confirmSubmission()">
             <input type="text" class="form-control my-3" name="user_name" placeholder="USERNAME">
             <input type="email" class="form-control my-3" name="email" placeholder="EMAIL ADDRESS">
             <input type="password" class="form-control my-3" name="password" placeholder="PASSWORD">

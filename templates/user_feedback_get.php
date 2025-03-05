@@ -1,7 +1,7 @@
 <?php
 $feedback = $data['ufeedback']->fetch_assoc();
 ?>
-<form class="container container-customscore" action="/user_feedback?eid=<?= $feedback['eid']?>" method="post" enctype="multipart/form-data">
+<form class="container container-customscore" action="/user_feedback?eid=<?= $feedback['eid']?>" method="post" enctype="multipart/form-data" onsubmit="return confirmSubmission()">
     <div class="rating-boxscore">
         <h2>ให้คะแนนกิจกรรม</h2>
         <div class="mb-3">

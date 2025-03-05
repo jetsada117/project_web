@@ -26,7 +26,6 @@ $count = 1;
             <?php endforeach; ?>
         </tbody>
     </table>
-
 </div>
 <div class="text-center mt-3">
     <a href="/myevent" class="btn-back">ย้อนกลับ</a>

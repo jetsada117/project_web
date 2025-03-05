@@ -6,7 +6,7 @@ $user = $data['user']->fetch_assoc();
         <span class="edit-titleedit">EDIT</span>
     </div>
     <div class="form-containeredit">
-        <form action="/profile_edit" method="post" enctype="multipart/form-data">
+        <form action="/profile_edit" method="post" enctype="multipart/form-data" onsubmit="return confirmSubmission()">
             <input type="text" class="form-control my-3" placeholder="USERNAME" name="user_name"
                 value="<?php echo htmlspecialchars($user['user_name']); ?>">
             <input type="email" class="form-control my-3" placeholder="EMAIL ADDRESS" name="email"

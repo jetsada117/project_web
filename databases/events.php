@@ -1,5 +1,4 @@
 <?php
-
 function getAllEvents(): mysqli_result|bool
 {
     $conn = getConnection();

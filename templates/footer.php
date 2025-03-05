@@ -9,6 +9,11 @@
         }
     }
 </script>
+<script>
+    function confirmSubmission() {
+        return confirm("Are you sure you want to confirm?");
+    }
+</script>
 </body>
 
 </html>

@@ -8,7 +8,7 @@ $event = $data['event']->fetch_assoc();
     </div>
     <div class="content-boxCreate">
         <h4 class="text-center">แก้ไขกิจกรรม</h4>
-        <form action="/edit_event?eid=<?=$event['eid']?>" method="POST" enctype="multipart/form-data">
+        <form name="eventForm" action="/edit_event?eid=<?=$event['eid']?>" method="POST" enctype="multipart/form-data" onsubmit="return confirmSubmission()">
             <div class="mb-3">
                 <label class="form-label">ชื่อกิจกรรม</label>
                 <input type="text" class="form-control" name="name" value="<?php echo htmlspecialchars($event['name']) ?>" required>
@@ -38,7 +38,7 @@ $event = $data['event']->fetch_assoc();
                 <input type="file" class="form-control" name="image">
             </div>
             <div class="d-flex justify-content-center gap-3 mt-3">
-                <button type="submit" class="buttonCreate">เพิ่ม</button>
+                <button type="submit" class="buttonCreate">บันทึก</button>
                 <button type="reset" class="buttonCreate">ล้างข้อมูล</button>
             </div>
         </form>
