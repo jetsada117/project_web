@@ -1,1 +1,2 @@
-checkin
+<?php 
+renderView('checkin_get');
