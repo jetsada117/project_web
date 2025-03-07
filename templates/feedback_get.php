@@ -13,5 +13,6 @@ $feedback = $data['feedbacks']->fetch_all(MYSQLI_ASSOC);
             <div class="comment-boxComment">ไม่มีความคิดเห็น</div>
         <?php } ?>
     </div>
-    <button class="btn-back">กลับ</button>
+    <a href="/myevent"><button  class="btn-back">กลับ</button></a>
+    
 </div>

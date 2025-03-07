@@ -27,5 +27,7 @@ $result = $data['members'];
             </table>
         </div>
     </div>
-    <a href="/myevent" class="btn-back">กลับ</a>
+    
+    <a href="/myevent" > <button class="btn-back">กลับ</button></a>
+    
 </div>

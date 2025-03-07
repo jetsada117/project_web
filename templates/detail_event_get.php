@@ -3,7 +3,8 @@ $event = $data['event']->fetch_assoc();
 ?>
 
 <div class="containercontent">
-    <div class="header-titlecontent">รายละเอียดกิจกรรม</div>
+    
+    <div class="header-titlecontent"><h2>รายละเอียดกิจกรรม</h2></div>
     <div class="row align-items-center">
         <div class="col-md-5 d-flex justify-content-center mb-4">
             <img src="<?php echo htmlspecialchars($event['image']); ?>" alt="Image" class="img-fluid border rounded img-detail">
