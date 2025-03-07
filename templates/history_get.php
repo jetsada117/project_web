@@ -11,6 +11,7 @@ $activities = $data['history'];
                 <th>DATE/MONTH/YEAR</th>
                 <th>สถานะ</th>
                 <th>แก้ไข</th>
+                <th>เช็คชื่อ</th>
             </tr>
         </thead>
         <tbody>
@@ -19,6 +20,13 @@ $activities = $data['history'];
                     <td><?php echo htmlspecialchars($activity['name']); ?></td>
                     <td><?php echo htmlspecialchars($activity['event_date']); ?></td>
                     <td><?php echo htmlspecialchars($activity['status']); ?></td>
+                    <td>
+                        <?php if ($activity['status'] == 'accepted') { ?>
+                            <a href="/checkin?eid=<?= $activity['eid'] ?>">
+                                เช็คชื่อ
+                            </a>
+                        <?php } ?>
+                    </td>
                     <td>
                         <?php if ($activity['status'] == 'accepted') { ?>
                             <a href="/user_feedback?eid=<?= $activity['eid'] ?>">
