@@ -1,5 +1,5 @@
 <div class="d-flex flex-row align-items-center justify-content-center w-100 h-100">
-    <div class="bg-white p-6 rounded-lg shadow-lg justify-content-center w-25 mt-5">
+    <div class="bg-white p-6 rounded-lg shadow-lg justify-content-center w-25 mt-5 p-5">
         <div class="text-center mb-4 mt-3">
             <img alt="A placeholder image of a lock icon representing security" class="mx-auto" height="100" src="https://storage.googleapis.com/a1aa/image/eMdsdRxh3TmqMEaBUq4S1ygKqTLeJ9T1165gwVd7nog.jpg" width="100" />
         </div>
