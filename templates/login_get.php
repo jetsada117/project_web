@@ -3,12 +3,12 @@
 
         <h3 style="font-weight: bold">LOG IN</h3>
         <div class="form-group mb-3">
-            <label for="Email" class="mb-2">Email:</label><br>
+        <label id="email-label" for="email">Email:</label>
             <input type="text" class="form-control " name="email" placeholder="Email">
         </div>
 
         <div class="password-wrapperlogin my-4">
-            <label for="password" class="mb-2">Password:</label><br>
+            <label for="password" class="mb-2">Password:</label>
             <input type="password" id="password" name="password" class="form-control" placeholder="Password">
             <span class="toggle-passwordlogin" onclick="togglePassword()">👁️</span>
         </div>

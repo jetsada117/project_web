@@ -24,7 +24,7 @@ $user = $data['user']->fetch_assoc();
             </select>
             <div class="text-center mt-4">
                 <button type="submit" class="buttonecustomedit">บันทึก</button>
-                <a href="/profile" class="buttonedit ms-4">ยกเลิก</a>
+                <a href="/profile" > <button class="buttonedit ms-4">ยกเลิก</button></a>
             </div>
         </form>
 

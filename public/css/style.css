@@ -1,5 +1,5 @@
 body {
-    background-color: #FFEBEE;
+    background-color: #FFEDFA;
     font-family: 'Prompt', sans-serif;
 }
 
@@ -15,11 +15,11 @@ a {
 }
 
 .navbar {
-    background-color: #EF9A9A !important;
+    background-color: #BE5985!important;
 }
 
 .navbar-nav .nav-link {
-    color: black;
+    color: white;
     font-weight: bold;
 }
 
@@ -94,7 +94,7 @@ a {
 }
 
 .btn-back {
-    background-color: pink;
+    background-color:#BE5985;
     color: black;
     border: none;
     padding: 15px 30px;
@@ -141,8 +141,9 @@ a {
 }
 
 .content-boxCreate {
-    background-color: #d0e4f5;
-
+    background-color: #FFB8E0; 
+    border: 2px solid #B71C1C; 
+    color: white;
     padding: 50px;
     border-radius: 10px;
     width: 600px;
@@ -169,7 +170,7 @@ a {
 }
 
 .buttonCreate {
-    background-image: linear-gradient(135deg, #FFA07A, #FF6347);
+    background-color: #BE5985;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -179,7 +180,7 @@ a {
     transition: background 0.3s ease, transform 0.2s ease;
 }
 .buttonCreateedit {
-    background-image: linear-gradient(135deg, #00ff15, #44cf95);
+    background-color: #56cc7d;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -316,7 +317,7 @@ h2 {
 
 /*Show.php*/
 .container-boxShow {
-    background-color: #d9eaf7;
+    background-color: #FFB8E0;
     border-radius: 20px;
     padding: 40px;
     width: 80%;
@@ -474,6 +475,12 @@ button:hover {
     border: 2px solid black;
 }
 
+label {
+    display: block;
+    text-align: left;
+    margin-left: 10px;
+}
+
 .password-wrapperlogin {
     position: relative;
 }
@@ -507,19 +514,19 @@ button:hover {
 }
 
 .edit-titleedit {
-    background: linear-gradient(to bottom, #3734e7, #9521d8);
+    background:   #BE5985;
     font-size: 3rem;
     font-weight: bold;
-    color: #f4a900;
+    color: white;
     border: 3px solid #c4c4c4;
     padding: 10px 40px;
     border-radius: 10px;
     position: relative;
-    top: -225px;
+    top: -200px;
 }
 
 .form-containeredit {
-    background: linear-gradient(to bottom, #ffedbc, #dd273d);
+    background: #FFB8E0;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
@@ -550,13 +557,7 @@ button:hover {
 }
 
 /*เพิ่มใหม่*/
-.containercontent img {
-    width: 450px;
-    height: 450px;
-    object-fit: contain;
-    border-radius: 10px;
-    background-color: #ffffff;
-}
+
 
 .activity-cardAct img {
     width: 100%;
@@ -570,7 +571,7 @@ button:hover {
     height: 450px;
     object-fit: contain;
     border-radius: 10px;
-    background-color: #ffffff;
+    background-color: #ffedfa00;
 }
 
 .editable-areacontent {
@@ -607,7 +608,8 @@ button:hover {
     background: white;
     padding: 30px;
     border-radius: 10px;
-    background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+    background:#FFB8E0;
+    color: white;
     text-align: center;
     width: 30%;
     height: 40%;
@@ -623,8 +625,8 @@ button:hover {
 
 .btn-profile {
 
-    background: linear-gradient(to right, #0167ff, #0044ff);
-    color: black;
+    background: #BE5985;
+    color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 10px;

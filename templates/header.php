@@ -17,8 +17,8 @@
                 <?php if (isset($_SESSION['timestamp'])) { ?>
                     <li class="nav-item"><a class="nav-link" href="/events">หน้าแรก</a></li>
                     <li class="nav-item"><a class="nav-link" href="/create_event">หน้าสร้างกิจกรรม</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/myevent">กิจกรรมของคุณ</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/request_enroll">คำขอ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/myevent">กิจกรรมของคุณ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/request_enroll">คำขอ</a></li>
             </ul>
             <form class="d-flex ms-auto">
                 <input class="form-control me-2" type="search" placeholder="SEARCH">
@@ -30,8 +30,8 @@
                 <li class="nav-item"><a class="nav-link" href="/profile">ข้อมูลผู้ใช้</a></li>
             </ul>
         <?php } else { ?>
-            <li class="nav-item"><a class="nav-link active" href="/login">เข้าสู่ระบบ</a></li>
-            <li class="nav-item"><a class="nav-link active" href="/register">ลงทะเบียน</a></li>
+            <li class="nav-item"><a class="nav-link" href="/login">เข้าสู่ระบบ</a></li>
+            <li class="nav-item"><a class="nav-link" href="/register">ลงทะเบียน</a></li>
             </ul>
         <?php } ?>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
