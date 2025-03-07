@@ -9,6 +9,7 @@ $activities = $data['history'];
             <tr>
                 <th>ชื่อกิจกรรม</th>
                 <th>DATE/MONTH/YEAR</th>
+                <th>สถานะ</th>
                 <th>แก้ไข</th>
             </tr>
         </thead>
@@ -17,11 +18,14 @@ $activities = $data['history'];
                 <tr>
                     <td><?php echo htmlspecialchars($activity['name']); ?></td>
                     <td><?php echo htmlspecialchars($activity['event_date']); ?></td>
+                    <td><?php echo htmlspecialchars($activity['status']); ?></td>
                     <td>
-                        <a href="/user_feedback?eid=<?= $activity['eid']?>">
-                            <button class="btn btn-danger">feedback</button>
-                        </a>
-                        <a href="/history_delete?eid=<?= $activity['eid']?>">
+                        <?php if ($activity['status'] == 'accepted') { ?>
+                            <a href="/user_feedback?eid=<?= $activity['eid'] ?>">
+                                <button class="btn btn-danger">feedback</button>
+                            </a>
+                        <?php } ?>
+                        <a href="/history_delete?eid=<?= $activity['eid'] ?>">
                             <button class="btn btn-danger">ลบประวัติ</button>
                         </a>
                     </td>

@@ -158,10 +158,9 @@ function getTopFeedbackEventByUser($uid): mysqli_result|bool
 function getHistoryEnroll($uid)
 {
     $conn = getConnection();
-    $sql = "SELECT e.* FROM events e
+    $sql = "SELECT e.*, en.status FROM events e
             JOIN enroll en ON e.eid = en.eid
-            WHERE en.uid =?
-            AND en.status = 'accepted'
+            WHERE en.uid = ?
             ORDER BY en.enroll_date DESC";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $uid);

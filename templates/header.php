@@ -18,7 +18,7 @@
                     <li class="nav-item"><a class="nav-link" href="/events">หน้าแรก</a></li>
                     <li class="nav-item"><a class="nav-link" href="/create_event">หน้าสร้างกิจกรรม</a></li>
                     <li class="nav-item"><a class="nav-link" href="/myevent">กิจกรรมของคุณ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/request_enroll">คำขอ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/history">การเข้าร่วม</a></li>
             </ul>
             <form class="d-flex ms-auto">
                 <input class="form-control me-2" type="search" placeholder="SEARCH">

@@ -20,14 +20,18 @@ $result = $data['members'];
                             <td><?php echo htmlspecialchars($member['user_name']); ?></td>
                             <td><?php echo htmlspecialchars($member['phone']); ?></td>
                             <td><?php echo htmlspecialchars($member['email']); ?></td>
-                            <td><a class='btn-deleteShow' href="/member_delete?uid=<?= $member['uid']?>&eid=<?= $member['eid']?>" onclick="return confirmSubmission()">ลบ</a></td>
+                            <td>
+                                <a class="btn btn-acceptwarm" href="/request_enroll?action=accept&uid=<?= $row['uid'] ?>&eid=<?= $row['eid'] ?>" onclick="return confirmSubmission()">ยอมรับ</a>
+                                <a class="btn btn-declinewarm" href="/request_enroll?action=declined&uid=<?= $row['uid'] ?>&eid=<?= $row['eid'] ?>" onclick="return confirmSubmission()">ปฏิเสธ</a>
+                            </td>
+                            <!-- <td><a class='btn-deleteShow' href="/member_delete?uid=<?= $member['uid'] ?>&eid=<?= $member['eid'] ?>" onclick="return confirmSubmission()">ลบ</a></td> -->
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
     </div>
-    
-    <a href="/myevent" > <button class="btn-back">กลับ</button></a>
-    
+
+    <a href="/myevent"> <button class="btn-back">กลับ</button></a>
+
 </div>
