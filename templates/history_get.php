@@ -8,7 +8,7 @@ $activities = $data['history'];
         <thead>
             <tr>
                 <th>ชื่อกิจกรรม</th>
-                <th>DATE/MONTH/YEAR</th>
+                <th>YEAR/MONTH/DATE</th>
                 <th>สถานะ</th>
                 <th>แก้ไข</th>
                 <th>เช็คชื่อ</th>

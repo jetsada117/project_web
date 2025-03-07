@@ -40,7 +40,7 @@ function updateStatus(int $uid, int $eid, String $status): bool
 function getMemberOfEvent(int $eid): mysqli_result|bool
 {
     $conn = getConnection();
-    $sql = "SELECT DISTINCT u.*, e.eid
+    $sql = "SELECT DISTINCT u.*, e.eid, e.status
             FROM users u
             JOIN enroll e ON u.uid = e.uid
             WHERE e.eid = ?";

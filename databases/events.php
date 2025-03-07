@@ -70,12 +70,12 @@ function createEvent(String $name, String $description, String $category, String
     return $stmt->affected_rows > 0;
 }
 
-function updateEvent(int $eid, String $name, String $description, String $category, String $event_date, String $start_time, String $image): bool
+function updateEventWithOutImage(String $name, String $description, String $category, String $event_date, String $start_time, int $eid): bool
 {
     $conn = getConnection();
-    $sql = "UPDATE events SET name =?, description =?, category =?, event_date =?, start_time =?, image =? WHERE eid =?";
+    $sql = "UPDATE events SET name =?, description =?, category =?, event_date =?, start_time =? WHERE eid =?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssssi", $name, $description, $category, $event_date, $start_time, $image, $eid);
+    $stmt->bind_param("sssssi", $name, $description, $category, $event_date, $start_time, $eid);
     $result = $stmt->execute();
     return $result;
 }

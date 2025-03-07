@@ -24,9 +24,9 @@ $event = $data['event']->fetch_assoc();
             <div class="mb-3">
                 <label class="form-label me-5">ประเภท</label>
                 <select class="form-selectedit my-3" name="category">
-                    <option value="การออกกำลังกาย" <?php echo $event['category'] ?> ? 'selected' : ''; ?>>ออกกำลังกาย</option>
-                    <option value="การแข่งขัน" <?php echo $event['category'] ?> ? 'selected' : ''; ?>>การแข่งขัน</option>
-                    <option value="การท่องเที่ยว" <?php echo $event['category'] ?> ? 'selected' : ''; ?>>การท่องเที่ยว</option>
+                    <option value="การออกกำลังกาย" <?php echo ($event['category'] == 'การออกกำลังกาย') ? 'selected' : ''; ?>>ออกกำลังกาย</option>
+                    <option value="การแข่งขัน" <?php echo ($event['category'] == 'การแข่งขัน') ? 'selected' : ''; ?>>การแข่งขัน</option>
+                    <option value="การท่องเที่ยว" <?php echo ($event['category'] == 'การท่องเที่ยว') ? 'selected' : ''; ?>>การท่องเที่ยว</option>
                 </select>
             </div>
             <div class="mb-3">
