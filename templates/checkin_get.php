@@ -9,19 +9,21 @@
         <p class="text-center text-gray-600 mb-4">
             Enter the OTP sent to your mobile number
         </p>
-        <form>
+
+        <form action="/checkin" method="post">
+
             <div class="d-flex justify-content-center mb-4">
-                <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" />
-                <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" />
-                <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" />
-                <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" />
-                <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" />
-                <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" />
+                <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" name="num1"/>
+                <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" name="num2"/>
+                <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" name="num3"/>
+                <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" name="num4"/>
+                <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" name="num5"/>
+                <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" name="num6"/>
             </div>
             <button class="w-100 bg-primary text-white py-2 rounded duration-200 " type="submit">
                 Verify
             </button>
-        </form>
+        </form >
         <div class="text-center mt-3">
             <p class="text-gray-600">
                 Didn't receive the code?
