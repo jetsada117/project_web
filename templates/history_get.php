@@ -22,7 +22,8 @@ $activities = $data['history'];
                     <td><?php echo htmlspecialchars($activity['status']); ?></td>
                     <td>
                         <?php if ($activity['status'] == 'accepted') { ?>
-                            <a href="/checkin?eid=<?= $activity['eid'] ?>">
+                            <a href="/checkin?eid=<?= $activity['eid'] ?> "onclick="return confirmSubmission()">
+                                
                                 เช็คชื่อ
                             </a>
                         <?php } ?>

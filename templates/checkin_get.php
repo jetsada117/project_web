@@ -9,6 +9,7 @@
         <p class="text-center text-gray-600 mb-4">
             Enter the OTP sent to your mobile number
         </p>
+<<<<<<< Updated upstream
 
         <form action="/checkin" method="post">
 
@@ -19,6 +20,23 @@
                 <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" name="num4"/>
                 <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" name="num5"/>
                 <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" name="num6"/>
+=======
+        <?php
+    
+      
+        $_SESSION['otp_expiry'] = time() + 300; // หมดอายุใน 5 นาที
+        echo "   OTP ของคุณคือ: " . $_SESSION['otp'];
+        ?>
+        <form action="/checkin" method="post">
+
+            <div class="d-flex justify-content-center mb-4">
+                <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" name="num1" />
+                <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" name="num2" />
+                <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" name="num3" />
+                <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" name="num4" />
+                <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" name="num5" />
+                <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" name="num6" />
+>>>>>>> Stashed changes
             </div>
             <button class="w-100 bg-primary text-white py-2 rounded duration-200 " type="submit">
                 Verify
