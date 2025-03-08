@@ -29,21 +29,7 @@
                     <li class="nav-item"><a class="nav-link" href="/myevent">กิจกรรมของคุณ</a></li>
                     <li class="nav-item"><a class="nav-link" href="/history">การเข้าร่วม</a></li>
             </ul>
-<<<<<<< Updated upstream
-            <form class="d-flex ms-auto">
-                <input class="form-control me-2" type="search" placeholder="SEARCH">
-                <div class="d-flex align-items-center">
-                    <span class="me-2">จาก:</span>
-                    <input class="form-control me-2" type="date">
-                    <span class="me-2">ถึง:</span>
-                    <input class="form-control me-2" type="date">
-                </div>
-                <button class="btn btn-outline-secondary" type="submit">
-                    <img src="https://cdn-icons-png.flaticon.com/512/49/49116.png" width="20px">
-                </button>
-            </form>
-=======
->>>>>>> Stashed changes
+
             <ul class="navbar-nav">
                 <form class="d-flex ms-auto ">
                     <input class="form-control me-2" type="search" placeholder="SEARCH">
