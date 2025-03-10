@@ -9,15 +9,34 @@ $eid = $_GET['eid'];
 if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
     $image_tmp = $_FILES['image']['tmp_name'];
     $image_name = $_FILES['image']['name'];
-    
-    $result = updateEventWithImage($name, $description, $category, $event_date, $start_time, $image_tmp, $image_name, $eid);
-} 
-else {
-    $result = updateEventWithOutImage($name, $description, $category, $event_date, $start_time, $eid);
-}
 
-if ($result) {
-    $uid = $_SESSION['uid'];
-    $event = getEventWithOutId($uid);
-    renderView('events_get', ['events' => $event]);
+    $image_more_tmp = [];
+    $image_more_names = [];
+
+    if (isset($_FILES['image_more']) && isset($_FILES['image_more']['error']) && is_array($_FILES['image_more']['error'])) {
+        foreach ($_FILES['image_more']['error'] as $key => $error) {
+            if ($error == 0 && isset($_FILES['image_more']['tmp_name'][$key]) && isset($_FILES['image_more']['name'][$key])) {
+                $image_more_tmp[] = $_FILES['image_more']['tmp_name'][$key];
+                $image_more_names[] = $_FILES['image_more']['name'][$key];
+            }
+        }
+    }
+
+    $result = updateEventWithImages($name, $description, $category, $event_date, $start_time, $image_tmp, $image_name, $image_more_tmp, $image_more_names, $eid);
+
+    if ($result) {
+        $event = getAllEvents();
+        renderView('events_get', ['events' => $event]);
+    } else {
+        echo "เกิดข้อผิดพลาดในการอัปเดตอีเวนต์!";
+    }
+} else {
+    $result = updateEventWithoutImage($name, $description, $category, $event_date, $start_time, $eid);
+
+    if ($result) {
+        $event = getAllEvents();
+        renderView('events_get', ['events' => $event]);
+    } else {
+        echo "เกิดข้อผิดพลาดในการอัปเดตอีเวนต์!";
+    }
 }

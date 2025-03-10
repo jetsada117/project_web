@@ -10,12 +10,9 @@
             Enter the OTP sent to your mobile number
         </p>
         <?php
-    
-      
-        $_SESSION['otp_expiry'] = time() + 300; 
         echo "   OTP ของคุณคือ: " . $_SESSION['otp'];
         ?>
-        <form action="/checkin" method="post">
+        <form action="/checkin?eid=<?= $data['eid']; ?>" method="post">
 
             <div class="d-flex justify-content-center mb-4">
                 <input class="otp-input border border-gray-300 rounded" maxlength="1" type="text" name="num1" />
@@ -29,7 +26,7 @@
             <button class="w-100 bg-primary text-white py-2 rounded duration-200 " type="submit">
                 Verify
             </button>
-        </form >
+        </form>
         <div class="text-center mt-3">
             <p class="text-gray-600">
                 Didn't receive the code?

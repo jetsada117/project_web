@@ -29,22 +29,19 @@
                     <li class="nav-item"><a class="nav-link" href="/myevent">กิจกรรมของคุณ</a></li>
                     <li class="nav-item"><a class="nav-link" href="/history">การเข้าร่วม</a></li>
             </ul>
-
             <ul class="navbar-nav">
-                <form class="d-flex ms-auto ">
-                    <input class="form-control me-2" type="search" placeholder="SEARCH">
+                <form class="d-flex ms-auto" action="/search" method="get">
+                    <input class="form-control me-2" type="text" placeholder="SEARCH" name="search">
                     <div class="d-flex align-items-center ">
                         <span class="me-2 " style="color: white;">จาก:</span>
-                        <input class="form-control me-2" type="date">
+                        <input class="form-control me-2" type="date" name="start">
                         <span class="me-2" style="color: white;">ถึง:</span>
-                        <input class="form-control me-2" type="date">
+                        <input class="form-control me-2" type="date" name="end">
                     </div>
-
                     <button class="btn btn-outline-secondary" type="submit">
                         <img src="https://cdn-icons-png.flaticon.com/512/49/49116.png" width="20px">
                     </button>
                 </form>
-
                 <li class="nav-item"><a class="nav-link" href="/profile">ข้อมูลผู้ใช้</a></li>
             </ul>
         <?php } else { ?>

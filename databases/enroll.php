@@ -158,7 +158,7 @@ function getTopFeedbackEventByUser($uid): mysqli_result|bool
 function getHistoryEnroll($uid)
 {
     $conn = getConnection();
-    $sql = "SELECT e.*, en.status FROM events e
+    $sql = "SELECT e.*, en.* FROM events e
             JOIN enroll en ON e.eid = en.eid
             WHERE en.uid = ?
             ORDER BY en.enroll_date DESC";
@@ -190,4 +190,13 @@ function updateUserFeedback(string $feedback, float $rating, int $uid, int $eid)
     $stmt->execute();
 
     return $stmt->affected_rows > 0;
+}
+
+function updateCheckin(int $uid,int $eid)
+{
+    $conn = getConnection();
+    $sql = "UPDATE enroll SET is_participated = 1 WHERE uid = ? AND eid = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $uid, $eid);
+    $stmt->execute();
 }

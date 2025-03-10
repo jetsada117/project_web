@@ -1,5 +1,5 @@
 <div class="container-customCreate">
-    <div class="content-boxCreate">
+    <div class="content-boxCreate mt-5">
         <h4 class="text-center">สร้างกิจกรรม</h4>
         <form action="/create_event" method="POST" enctype="multipart/form-data" onsubmit="return confirmSubmission()">
             <div class="mb-3">
@@ -29,6 +29,10 @@
             <div class="mb-3">
                 <label class="form-label">อัปโหลดรูปภาพ</label>
                 <input type="file" class="form-control" name="image">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">อัปโหลดรูปภาพเพิ่มเติม (ได้มากกว่า 1 ภาพ)</label>
+                <input type="file" class="form-control" name="image_more[]" multiple>
             </div>
             <div class="d-flex justify-content-center gap-3 mt-3">
                 <button type="submit" class="buttonCreateedit">เพิ่ม</button>

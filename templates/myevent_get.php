@@ -8,7 +8,7 @@ $events = $data['events'];
             <div class="activity-box p-3">
                 <div class="row mb-2">
                     <div class="col-4 fw-bold">ชื่อกิจกรรม</div>
-                    <div class="col-3 text-end fw-bold">DATE/MONTH/YEAR</div>
+                    <div class="col-3 text-end fw-bold">YEAR/MONTH/DATE</div>
                 </div>
                 <?php while ($event = $events->fetch_assoc()): ?>
                     <div class="row align-items-center d-flex justify-content-between mt-3">

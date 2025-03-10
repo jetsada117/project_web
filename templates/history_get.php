@@ -21,9 +21,8 @@ $activities = $data['history'];
                     <td><?php echo htmlspecialchars($activity['event_date']); ?></td>
                     <td><?php echo htmlspecialchars($activity['status']); ?></td>
                     <td>
-                        <?php if ($activity['status'] == 'accepted') { ?>
-                            <a href="/checkin?eid=<?= $activity['eid'] ?> "onclick="return confirmSubmission()">
-                                
+                        <?php if ($activity['status'] == 'accepted' && $activity['is_participated'] == 0) { ?>
+                            <a href="/checkin?eid=<?= $activity['eid'] ?>">
                                 เช็คชื่อ
                             </a>
                         <?php } ?>
@@ -35,7 +34,7 @@ $activities = $data['history'];
                             </a>
                         <?php } ?>
                         <a href="/history_delete?eid=<?= $activity['eid'] ?>">
-                            <button class="btn btn-danger">ลบประวัติ</button>
+                            <button class="btn btn-danger"  onclick="return confirmSubmission()">ลบประวัติ</button>
                         </a>
                     </td>
                 </tr>

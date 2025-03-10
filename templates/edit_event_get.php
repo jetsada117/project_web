@@ -6,7 +6,7 @@ $event = $data['event']->fetch_assoc();
     <div>
         <img class="img-detail" src="<?php echo htmlspecialchars($event['image']); ?>">
     </div>
-    <div class="content-boxCreate">
+    <div class="content-boxCreate mt-5">
         <h4 class="text-center">แก้ไขกิจกรรม</h4>
         <form name="eventForm" action="/edit_event?eid=<?=$event['eid']?>" method="POST" enctype="multipart/form-data" onsubmit="return confirmSubmission()">
             <div class="mb-3">
@@ -36,6 +36,10 @@ $event = $data['event']->fetch_assoc();
             <div class="mb-3">
                 <label class="form-label">อัปโหลดรูปภาพ</label>
                 <input type="file" class="form-control" name="image">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">อัปโหลดรูปภาพเพิ่มเติม (ได้มากกว่า 1 ภาพ)</label>
+                <input type="file" class="form-control" name="image_more[]" multiple>
             </div>
             <div class="d-flex justify-content-center gap-3 mt-3">
                 <button type="submit" class="buttonCreateedit">แก้ไข</button>

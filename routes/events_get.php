@@ -1,4 +1,3 @@
 <?php
-$uid = $_SESSION['uid'];
-$event = getEventWithOutId($uid);
+$event = getAllEvents();
 renderView('events_get', ['events' => $event]);
