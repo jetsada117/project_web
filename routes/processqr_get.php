@@ -1,5 +1,4 @@
 <?php
-require 'functions/otp.php';
 
 $eid = $_GET['eid'];
 $uid = $_GET['uid'];
