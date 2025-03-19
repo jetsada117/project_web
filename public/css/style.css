@@ -188,10 +188,6 @@ a {
 }
 
 
-button:hover {
-    background-image: linear-gradient(135deg, #FF6347, #FFA500);
-    transform: scale(1.1);
-}
 
 .containeryour {
     border: 3px solid #FFA500;
@@ -447,8 +443,9 @@ table {
 
 button:hover {
     background-image: linear-gradient(135deg, #FF6347, #FFA500);
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
 }
+
 
 /*LOgin*/
 .container-customLogin {
@@ -587,8 +584,9 @@ label {
     padding: 15px;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
     width: 100%;
-    max-width: 350px; /* จำกัดขนาดเพื่อให้พอดีกับ 3 คอลัมน์ */
-    
+    max-width: 350px;
+    /* จำกัดขนาดเพื่อให้พอดีกับ 3 คอลัมน์ */
+
     max-height: 600px;
 }
 
@@ -634,7 +632,7 @@ label {
 .carousel-control-next {
     width: 5%;
     opacity: 0.7;
-    background: none; 
+    background: none;
 }
 
 .carousel-control-next-icon {
@@ -645,6 +643,16 @@ label {
     padding: 8px;
     background-size: 50%;
 }
+
+
+
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    /* เพิ่มสีเข้มขึ้นเมื่อ hover */
+}
+
 
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
@@ -658,12 +666,6 @@ label {
     margin: 0 4px;
 }
 
-.carousel {
-    width: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 
 .col-md-5 {
     padding: 0;
@@ -676,4 +678,50 @@ label {
 
 .carousel-indicators {
     display: none;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    /* ปรับตามขนาดที่ต้องการ */
+    margin: auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    bottom: 10px;
+    /* ระยะห่างจากขอบล่าง */
+    top: auto;
+    /* ไม่ใช้ top เพื่อป้องกันการหลุด */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    /* ปรับขนาดปุ่ม */
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-control-prev {
+    left: 35%;
+}
+
+.carousel-control-next {
+    left: 55%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    filter: invert(100%);
 }

@@ -10,41 +10,31 @@ $num_images = ($images_result) ? $images_result->num_rows : 0;
     <div class="row d-flex justify-content-center align-items-center mt-3 w-100">
         <div class="col-md-5 d-flex justify-content-center mb-4 me-5 w-25">
             <div id="eventImageCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#eventImageCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <?php
-                    if ($num_images > 0):
-                        for ($i = 0; $i < $num_images; $i++):
-                    ?>
-                            <button type="button" data-bs-target="#eventImageCarousel" data-bs-slide-to="<?= $i + 1 ?>" aria-label="Slide <?= $i + 2 ?>"></button>
-                    <?php
-                        endfor;
-                    endif;
-                    ?>
-                </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="<?php echo htmlspecialchars($event['image']); ?>" alt="Main Image" class="img-detail">
                     </div>
-                    <?php
-                    if ($num_images > 0):
-                        $images_result->data_seek(0);
-
-                        while ($image = $images_result->fetch_assoc()):
-                    ?>
+                    <?php if ($num_images > 0): ?>
+                        <?php while ($image = $images_result->fetch_assoc()): ?>
                             <div class="carousel-item">
                                 <img src="<?php echo htmlspecialchars($image['image_path']); ?>" alt="Additional Image" class="img-detail">
                             </div>
-                    <?php
-                        endwhile;
-                    endif;
-                    ?>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
                 </div>
+
+              
+                <button class="carousel-control-prev" type="button" data-bs-target="#eventImageCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+
                 <button class="carousel-control-next" type="button" data-bs-target="#eventImageCarousel" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
+
         </div>
         <div class="col-md-5 ">
             <div class="cardcontent">
