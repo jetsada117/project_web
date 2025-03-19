@@ -52,6 +52,17 @@ a {
     border-radius: 10px;
     padding: 10px;
 }
+/*เพิ่ม*/
+.activity-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 คอลัมน์ */
+    gap: 20px; /* ระยะห่างระหว่างการ์ด */
+    overflow-y: auto; /* ทำให้สามารถเลื่อนดูได้ */
+    max-height: 80vh; /* จำกัดความสูงของ container */
+    padding: 10px;
+}
+
+
 
 .activity-cardAct1 p {
     color: #D32F2F;
@@ -582,15 +593,12 @@ label {
 
 /*แก้ไข*/
 .activity-cardAct {
-    /* background: linear-gradient(to bottom, #ffedbc, #dd273d); */
     background-color: #FFCDD2;
-
     border-radius: 20px;
     padding: 15px;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-    width: 92%;
+    width: 100%; /* ขยายเต็มคอลัมน์ */
     height: 100%;
-
 }
 
 /*Profile*/
