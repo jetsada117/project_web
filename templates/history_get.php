@@ -3,7 +3,7 @@ $activities = $data['history'];
 ?>
 
 <div class="container container-custom mt-5">
-    <h2>ประวัติการเข้าร่วม</h2>
+    <h2 class="text-center mb-5">ประวัติการเข้าร่วม</h2>
     <table class="table table-custom">
         <thead>
             <tr>

@@ -1,14 +1,27 @@
 <?php
+require 'vendor/autoload.php';
+require 'functions/otp.php';
+
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\PngWriter;
+
 $eid = $_GET['eid'];
+$uid = $_SESSION['uid'];
 
-if (!isset($_SESSION['otp']) || !isset($_SESSION['otp_time']) || (time() - $_SESSION['otp_time']) > 180) {
-    $otp = "";
-    for ($i = 0; $i < 6; $i++) {
-        $otp .= random_int(0, 9);
-    }
+$otp = getOTP();
 
-    $_SESSION['otp'] = $otp;
-    $_SESSION['otp_time'] = time();
+$isupdate = updateOTP($otp, $uid, $eid);
+
+if ($isupdate) {
+    $history = getHistoryEnrolL($uid);
+    renderView('history_get', ['history' => $history]);
 }
 
-renderView('checkin_get', ['eid' => $eid]);
+$text = '/processqr?eid=' . $eid . '&uid=' . $uid . '&otp=' . $otp;
+$qrCode = new QrCode($text);
+$writer = new PngWriter();
+$result = $writer->write($qrCode);
+$dataUri = $result->getDataUri();
+
+renderView('checkin_get', ['uid' => $uid, 'eid' => $eid, 'qrCodeDataUri' => $dataUri]);
+?>

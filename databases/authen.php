@@ -22,4 +22,6 @@ function logout(): void
 {
     unset($_SESSION['timestamp']);
     unset($_SESSION['uid']);
+    unset($_SESSION['otp']);
+    unset($_SESSION['otp_time']);
 }

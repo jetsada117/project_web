@@ -20,8 +20,7 @@ function insertEnroll(int $uid, int $eid): bool
     $stmt->bind_param("iis", $uid, $eid, $status);
     $stmt->execute();
 
-    if ($stmt->affected_rows > 0)
-    {
+    if ($stmt->affected_rows > 0) {
         return true;
     } else {
         return false;
@@ -169,7 +168,7 @@ function getHistoryEnroll($uid)
     return $result;
 }
 
-function getUserFeedbackById(int $uid,int $eid): mysqli_result|bool
+function getUserFeedbackById(int $uid, int $eid): mysqli_result|bool
 {
     $conn = getConnection();
     $sql = "SELECT * FROM enroll WHERE uid =? AND eid =?";
@@ -192,7 +191,7 @@ function updateUserFeedback(string $feedback, float $rating, int $uid, int $eid)
     return $stmt->affected_rows > 0;
 }
 
-function updateCheckin(int $uid,int $eid)
+function updateCheckin(int $uid, int $eid)
 {
     $conn = getConnection();
     $sql = "UPDATE enroll SET is_participated = 1 WHERE uid = ? AND eid = ?";
@@ -200,3 +199,22 @@ function updateCheckin(int $uid,int $eid)
     $stmt->bind_param("ii", $uid, $eid);
     $stmt->execute();
 }
+
+function updateOTP(string $otp, int $uid, int $eid){
+    $conn = getConnection();
+    $sql = "UPDATE enroll SET otp =? WHERE uid =? AND eid =?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("iii", $otp, $uid, $eid);
+    $stmt->execute();
+}
+
+function getOTP(int $uid, int $eid){
+    $conn = getConnection();
+    $sql = "SELECT otp FROM enroll WHERE uid =? AND eid =?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $uid, $eid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result;
+}
+
