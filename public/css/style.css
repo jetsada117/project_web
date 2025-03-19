@@ -498,7 +498,6 @@ label {
     transition: background 0.3s ease, transform 0.2s ease;
 }
 
-/**/
 
 .container-customeditedit {
     display: flex;
@@ -695,13 +694,10 @@ label {
 .carousel-control-next {
     position: absolute;
     bottom: 10px;
-    /* ระยะห่างจากขอบล่าง */
     top: auto;
-    /* ไม่ใช้ top เพื่อป้องกันการหลุด */
     left: 50%;
     transform: translateX(-50%);
     width: 40px;
-    /* ปรับขนาดปุ่ม */
     height: 40px;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
