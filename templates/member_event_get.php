@@ -22,11 +22,10 @@ $result = $data['members'];
                             <td><?php echo htmlspecialchars($member['email']); ?></td>
                             <td>
                                 <?php if ($member['status'] == 'pending') { ?>
-                                    <a class="btn btn-acceptwarm" href="/request_enroll?action=accept&uid=<?= $member['uid'] ?>&eid=<?= $member['eid'] ?>" onclick="return confirmSubmission()">ยอมรับ</a>
-                                    <a class="btn btn-declinewarm" href="/request_enroll?action=declined&uid=<?= $member['uid'] ?>&eid=<?= $member['eid'] ?>" onclick="return confirmSubmission()">ปฏิเสธ</a>
+                                    <a class="btn btn-acceptwarm" href="#" onclick="openConfirmModal('accept', <?= $member['uid'] ?>, <?= $member['eid'] ?>)">ยอมรับ</a>
+                                    <a class="btn btn-declinewarm" href="#" onclick="openConfirmModal('decline', <?= $member['uid'] ?>, <?= $member['eid'] ?>)">ปฏิเสธ</a>
                                 <?php } ?>
                             </td>
-                            <!-- <td><a class='btn-deleteShow' href="/member_delete?uid=<?= $member['uid'] ?>&eid=<?= $member['eid'] ?>" onclick="return confirmSubmission()">ลบ</a></td> -->
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -37,3 +36,49 @@ $result = $data['members'];
     <a href="/myevent"> <button class="btn-back">กลับ</button></a>
 
 </div>
+
+
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="border-radius: 10px; border: 2px solid #a60064;">
+            <div class="modal-header" style="background-color: #a60064; color: white;">
+                <h5 class="modal-title" id="confirmModalLabel">ยืนยันการดำเนินการ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                คุณแน่ใจหรือไม่ว่าต้องการดำเนินการนี้?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" style="background-color: #f8bad0; color: #a60064;" data-bs-dismiss="modal">ยกเลิก</button>
+                <button type="button" class="btn" style="background-color: #6a00a6; color: white;" id="confirmAction">ยืนยัน</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let actionType = '';
+    let uid = '';
+    let eid = '';
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const actionConfirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
+
+       
+        window.openConfirmModal = function(action, userId, eventId) {
+            actionType = action;
+            uid = userId;
+            eid = eventId;
+            actionConfirmModal.show();
+        };
+
+    
+        document.getElementById("confirmAction").addEventListener("click", function() {
+            const url = actionType === 'accept' 
+                ? `/request_enroll?action=accept&uid=${uid}&eid=${eid}` 
+                : `/request_enroll?action=declined&uid=${uid}&eid=${eid}`;
+            
+            window.location.href = url;
+        });
+    });
+</script>

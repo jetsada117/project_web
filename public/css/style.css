@@ -48,7 +48,7 @@ a {
 }
 
 .btn-join {
-    background-color: #9900ff;
+    background-color: #14e08b;
     border: none;
     color: white;
     width: 100%;
@@ -673,3 +673,4 @@ label {
     background-size: contain;
     filter: invert(100%);
 }
+
