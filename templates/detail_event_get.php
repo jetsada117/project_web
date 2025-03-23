@@ -23,7 +23,7 @@ $num_images = ($images_result) ? $images_result->num_rows : 0;
                     <?php endif; ?>
                 </div>
 
-                
+
                 <button class="carousel-control-prev" type="button" data-bs-target="#eventImageCarousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
@@ -49,11 +49,46 @@ $num_images = ($images_result) ? $images_result->num_rows : 0;
     </div>
 
     <div class="mt-3 d-flex justify-content-center gap-3">
-        <a href="/enroll?eid=<?= $event['eid']; ?>">
-            <button class="btn btn-primary btn-custom" onclick="return confirmSubmission()">เข้าร่วม</button>
-        </a>
+        <button class="btn btn-primary btn-custom" id="joinEvent" data-url="/enroll?eid=<?= $event['eid']; ?>">เข้าร่วม</button>
         <a href="/events">
             <button class="btn btn-danger btn-custom">ยกเลิก</button>
         </a>
     </div>
 </div>
+<!-- Modal ยืนยันเข้าร่วมกิจกรรม -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="border-radius: 10px; border: 2px solid #007bff;">
+            <div class="modal-header" style="background-color: #007bff; color: white;">
+                <h5 class="modal-title" id="confirmModalLabel">ยืนยันการเข้าร่วม</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                คุณแน่ใจหรือไม่ว่าต้องการเข้าร่วมกิจกรรมนี้?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ยกเลิก</button>
+                <a id="confirmJoin" href="#" class="btn btn-primary">ยืนยัน</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ปุ่มที่เรียกใช้ Modal -->
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let targetUrl = "";
+        const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
+
+        document.getElementById("joinEvent").addEventListener("click", function() {
+            targetUrl = this.getAttribute("data-url");
+            confirmModal.show();
+        });
+
+        document.getElementById("confirmJoin").addEventListener("click", function() {
+            window.location.href = targetUrl;
+        });
+    });
+</script>
