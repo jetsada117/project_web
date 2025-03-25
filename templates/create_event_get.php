@@ -1,7 +1,7 @@
 <div class="container-customCreate">
     <div class="content-boxCreate mt-5">
         <h4 class="text-center">สร้างกิจกรรม</h4>
-        <form id="eventForm" action="/create_event" method="POST" enctype="multipart/form-data">
+        <form id="eventForm" action="/create_event" method="POST" enctype="multipart/form-data" onsubmit="return confirmSubmission()">
             <div class="mb-3">
                 <label class="form-label">ชื่อกิจกรรม</label>
                 <input type="text" class="form-control" name="name" required>
@@ -35,7 +35,7 @@
                 <input type="file" class="form-control" name="image_more[]" multiple>
             </div>
             <div class="d-flex justify-content-center gap-3 mt-3">
-                <button type="button" class="buttonCreateedit" id="openConfirmModal">เพิ่ม</button>
+                <button type="submit" class="buttonCreateedit">เพิ่ม</button>
                 <button type="reset" class="buttonCreate">ล้างข้อมูล</button>
             </div>
         </form>

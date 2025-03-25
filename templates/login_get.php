@@ -1,6 +1,5 @@
 <form action="/login" method="post" class="container-customLogin">
     <div class="login-container">
-
         <h3 style="font-weight: bold">LOG IN</h3>
         <div class="form-group mb-3">
         <label id="email-label" for="email">Email:</label>

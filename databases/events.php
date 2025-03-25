@@ -1,5 +1,5 @@
 <?php
-function getAllEvents(): mysqli_result|bool
+function getAllEvents()
 {
     $conn = getConnection();
     $sql = "SELECT * FROM events";
@@ -7,7 +7,7 @@ function getAllEvents(): mysqli_result|bool
     return $result;
 }
 
-function getEventWithOutId(int $uid): mysqli_result|bool
+function getEventWithOutId(int $uid)
 {
     $conn = getConnection();
     $sql = "SELECT DISTINCT e.*
@@ -25,7 +25,7 @@ function getEventWithOutId(int $uid): mysqli_result|bool
     return $result;
 }
 
-function getEventById(int $eid): mysqli_result|bool
+function getEventById(int $eid)
 {
     $conn = getConnection();
     $sql = "SELECT * FROM events WHERE eid = ?";
@@ -36,7 +36,7 @@ function getEventById(int $eid): mysqli_result|bool
     return $result;
 }
 
-function getAllEventById(int $id): mysqli_result|bool
+function getAllEventById(int $id)
 {
     $conn = getConnection();
     $sql = "SELECT DISTINCT * FROM events WHERE created_by = ?";
@@ -46,29 +46,6 @@ function getAllEventById(int $id): mysqli_result|bool
     $result = $stmt->get_result();
     return $result;
 }
-
-// function createEvent(String $name, String $description, String $category, String $event_date, String $start_time, $image_tmp, $image_name, int $uid): bool
-// {
-//     $conn = getConnection();
-
-//     $upload_path = 'eventimage/';
-
-//     if (!file_exists($upload_path)) {
-//         mkdir($upload_path, 0777, true);
-//     }
-
-//     $new_filename = uniqid() . '_' . $image_name;
-//     $image_path = $upload_path . $new_filename;
-
-//     if (move_uploaded_file($image_tmp, $image_path)) {
-//         $sql = "INSERT INTO events (name, description, category, event_date, start_time, image, created_by) VALUES (?,?,?,?,?,?,?)";
-//         $stmt = $conn->prepare($sql);
-//         $stmt->bind_param("ssssssi", $name, $description, $category, $event_date, $start_time, $image_path, $uid);
-//         $stmt->execute();
-//     }
-
-//     return $stmt->affected_rows > 0;
-// }
 
 function createEventImage(String $name, String $description, String $category, String $event_date, String $start_time, $image_tmp, $image_name, $image_more_tmp, $image_more_names, int $uid): bool
 {

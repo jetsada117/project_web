@@ -18,7 +18,7 @@ $events = $data['events'];
                                 <?php echo nl2br(htmlspecialchars($row['description'])); ?><br>
                                 วันที่: <?php echo date("d F Y", strtotime($row['event_date'])); ?><br>
                             </p>
-                            <a href="/enroll?eid=<?= $row['eid']; ?>" class="btn btn-join">เข้าร่วม</a>
+                            <a href="/enroll?eid=<?= $row['eid']; ?>" class="btn btn-join" onclick="return confirmSubmission()">เข้าร่วม</a>
                         </div>
                     </a>
                 </div>
@@ -26,42 +26,3 @@ $events = $data['events'];
         <?php endwhile; ?>
     </div>
 </div>
-<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content" style="border-radius: 10px; border: 2px solid #a60064;">
-            <div class="modal-header" style="background-color: #a60064; color: white;">
-                <h5 class="modal-title" id="confirmModalLabel">ยืนยันการเข้าร่วม</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                คุณแน่ใจหรือไม่ว่าต้องการเข้าร่วมกิจกรรมนี้?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn" style="background-color: #f8bad0; color: #a60064;" data-bs-dismiss="modal">ยกเลิก</button>
-                <button type="button" class="btn" style="background-color: #6a00a6; color: white;" id="confirmJoin">ยืนยัน</button>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        let targetUrl = ""; 
-
-   
-        const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
-
-    
-        document.querySelectorAll(".btn-join").forEach(button => {
-            button.addEventListener("click", function(event) {
-                event.preventDefault(); 
-                targetUrl = this.getAttribute("href"); 
-                confirmModal.show(); 
-            });
-        });
-
-
-        document.getElementById("confirmJoin").addEventListener("click", function() {
-            window.location.href = targetUrl; 
-        });
-    });
-</script>

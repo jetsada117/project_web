@@ -36,7 +36,7 @@ function updateStatus(int $uid, int $eid, String $status): bool
     return $stmt->execute();
 }
 
-function getMemberOfEvent(int $eid): mysqli_result|bool
+function getMemberOfEvent(int $eid)
 {
     $conn = getConnection();
     $sql = "SELECT DISTINCT u.*, e.eid, e.status
@@ -50,7 +50,7 @@ function getMemberOfEvent(int $eid): mysqli_result|bool
     return $result;
 }
 
-function getEnrollmentsByUserId(int $uid): mysqli_result|bool
+function getEnrollmentsByUserId(int $uid)
 {
     $conn = getConnection();
     $sql = "SELECT e.*
@@ -63,7 +63,7 @@ function getEnrollmentsByUserId(int $uid): mysqli_result|bool
     return $result;
 }
 
-function getRequestEnrollAllEvents(int $uid): mysqli_result|bool
+function getRequestEnrollAllEvents(int $uid)
 {
     $conn = getConnection();
     $sql = "SELECT e.status, e.eid, u.uid, u.user_name, u.email, u.phone, u.gender, 
@@ -94,7 +94,7 @@ function deleteEnroll(int $uid, int $eid)
     }
 }
 
-function getAllFeedbackEvent(int $eid): mysqli_result|bool
+function getAllFeedbackEvent(int $eid)
 {
     $conn = getConnection();
     $sql = "SELECT u.user_name, e.feedback FROM enroll e join users u on e.uid = u.uid where e.eid = ? and e.feedback is not null";
@@ -135,7 +135,7 @@ function updateRatingEvent(int $rating, $uid, int $eid)
     }
 }
 
-function getTopFeedbackEventByUser($uid): mysqli_result|bool
+function getTopFeedbackEventByUser($uid)
 {
     $conn = getConnection();
     $sql = "SELECT e.eid, ev.name, ev.event_date,
@@ -168,7 +168,7 @@ function getHistoryEnroll($uid)
     return $result;
 }
 
-function getUserFeedbackById(int $uid, int $eid): mysqli_result|bool
+function getUserFeedbackById(int $uid, int $eid)
 {
     $conn = getConnection();
     $sql = "SELECT * FROM enroll WHERE uid =? AND eid =?";
@@ -200,15 +200,19 @@ function updateCheckin(int $uid, int $eid)
     $stmt->execute();
 }
 
-function updateOTP(string $otp, int $uid, int $eid){
+function updateOTP(string $otp, int $uid, int $eid): bool
+{
     $conn = getConnection();
     $sql = "UPDATE enroll SET otp =? WHERE uid =? AND eid =?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("iii", $otp, $uid, $eid);
+    $stmt->bind_param("sii", $otp, $uid, $eid);
     $stmt->execute();
+
+    return $stmt->affected_rows > 0;
 }
 
-function getOTP(int $uid, int $eid){
+function getOTP(int $uid, int $eid)
+{
     $conn = getConnection();
     $sql = "SELECT otp FROM enroll WHERE uid =? AND eid =?";
     $stmt = $conn->prepare($sql);
@@ -217,4 +221,3 @@ function getOTP(int $uid, int $eid){
     $result = $stmt->get_result();
     return $result;
 }
-

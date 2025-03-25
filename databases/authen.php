@@ -1,9 +1,11 @@
 <?php
-function login(String $email, String $password): array|bool
+function login(String $email, String $password)
 {
     $conn = getConnection();
     $sql = 'select * from users where email = ?';
+
     $stmt = $conn->prepare($sql);
+
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
