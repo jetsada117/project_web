@@ -7,7 +7,7 @@ function insertEnroll(int $uid, int $eid): bool
 
     $check = "SELECT * FROM events WHERE eid = ? and created_by = ?";
     $stmt = $conn->prepare($check);
-    $stmt->bind_param("ii",$eid, $uid);
+    $stmt->bind_param("ii", $eid, $uid);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -149,14 +149,13 @@ function updateRatingEvent(int $rating, $uid, int $eid)
 function getTopFeedbackEventByUser($uid)
 {
     $conn = getConnection();
-    $sql = "SELECT e.eid, ev.name, ev.event_date,
-            AVG(e.rating) AS average_rating, 
+    $sql = "SELECT ev.eid, ev.name, ev.event_date,
+            COALESCE(AVG(e.rating), 0) AS average_rating, 
             COUNT(e.uid) AS total_participants
-            FROM enroll e
-            JOIN events ev ON e.eid = ev.eid
+            FROM events ev
+            LEFT JOIN enroll e ON ev.eid = e.eid AND e.status = 'accepted'
             WHERE ev.created_by = ?
-            and status = 'accepted'
-            GROUP BY e.eid, ev.name
+            GROUP BY ev.eid, ev.name, ev.event_date
             ORDER BY average_rating DESC";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $uid);

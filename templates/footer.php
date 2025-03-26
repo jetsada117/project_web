@@ -158,6 +158,55 @@
         }
     });
 </script>
+<script>
+    const form = document.querySelector('form[action="/register"]');
+
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const userName = document.querySelector('input[name="user_name"]').value.trim();
+            if (userName === '') {
+                alert('กรุณากรอกชื่อผู้ใช้');
+                return;
+            }
+
+            const email = document.querySelector('input[name="email"]').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email === '' || !emailRegex.test(email)) {
+                alert('กรุณากรอกอีเมลให้ถูกต้อง');
+                return;
+            }
+
+            const userImage = document.querySelector('input[name="user_image"]').files[0];
+            if (!userImage) {
+                alert('กรุณาเลือกรูปภาพโปรไฟล์');
+                return;
+            }
+
+            const dob = document.querySelector('input[name="dob"]').value;
+            if (dob === '') {
+                alert('กรุณาเลือกวันเกิด');
+                return;
+            }
+
+            const phone = document.querySelector('input[name="phone"]').value.trim();
+            const phoneRegex = /^[0-9]{10}$/;
+            if (phone === '' || !phoneRegex.test(phone)) {
+                alert('กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง (10 หลัก)');
+                return;
+            }
+
+            const gender = document.querySelector('select[name="gender"]').value;
+            if (gender === 'เพศ') {
+                alert('กรุณาเลือกเพศ');
+                return;
+            }
+
+            form.submit();
+        });
+    }
+</script>
 </body>
 
 </html>
