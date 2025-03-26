@@ -1,5 +1,4 @@
 <?php
-
 $eid = $_GET['eid'];
 $uid = $_GET['uid'];
 $otp = $_GET['otp'];
