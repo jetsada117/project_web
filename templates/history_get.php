@@ -1,7 +1,14 @@
 <?php
 $activities = $data['history'];
 ?>
-
+<?php if (isset($_SESSION['message'])) { ?>
+    <script>
+        window.onload = function() {
+            showCustomAlert("<?= htmlspecialchars($_SESSION['message']) ?>");
+        };
+    </script>
+<?php unset($_SESSION['message']);
+} ?>
 <div class="container container-custom mt-5">
     <h2 class="text-center mb-5">ประวัติการเข้าร่วม</h2>
     <table class="table table-custom">
@@ -22,7 +29,7 @@ $activities = $data['history'];
                     <td><?php echo htmlspecialchars($activity['status']); ?></td>
                     <td>
                         <?php if ($activity['status'] == 'accepted' && $activity['is_participated'] == 0) { ?>
-                            <a class="btn btn-primary btn-checkin" href="/checkin?eid=<?= $activity['eid']?>">เช็คชื่อ</a>
+                            <a class="btn btn-primary btn-checkin" href="/checkin?eid=<?= $activity['eid'] ?>">เช็คชื่อ</a>
                         <?php } ?>
                     </td>
                     <td>
@@ -31,7 +38,7 @@ $activities = $data['history'];
                                 <button class="btn btn-warning">Feedback</button>
                             </a>
                         <?php } ?>
-                        <a class="btn btn-danger btn-delete" href="/history_delete?eid=<?= $activity['eid']?>" onclick="return confirmSubmission()">ลบประวัติ</a>
+                        <a class="btn btn-danger btn-delete" href="/history_delete?eid=<?= $activity['eid'] ?>" onclick="return confirmSubmission()">ลบประวัติ</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

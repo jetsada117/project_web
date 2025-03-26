@@ -21,7 +21,7 @@ $otp = generateOTP(6);
 
 $isupdate = updateOTP($otp, $uid, $eid);
 
-if ($isupdate) {
+if (!$isupdate) {
     $history = getHistoryEnrolL($uid);
     renderView('history_get', ['history' => $history]);
 }

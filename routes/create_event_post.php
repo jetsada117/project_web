@@ -30,5 +30,5 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
         echo "เกิดข้อผิดพลาดในการสร้างอีเวนต์!";
     }
 } else {
-    echo "กรุณาอัปโหลดรูปภาพหลัก!";
+    renderView('create_event_get');
 }

@@ -6,7 +6,7 @@ $user = $data['user']->fetch_assoc();
         <span class="edit-titleedit">EDIT</span>
     </div>
     <div class="form-containeredit">
-        <form id="profileEditForm" action="/profile_edit" method="post" enctype="multipart/form-data" onsubmit="return confirmSubmission()">
+        <form action="/profile_edit" method="post" enctype="multipart/form-data" onsubmit="return confirmSubmission()">
             <input type="text" class="form-control my-3" placeholder="USERNAME" name="user_name"
                 value="<?php echo htmlspecialchars($user['user_name']); ?>">
             <input type="email" class="form-control my-3" placeholder="EMAIL ADDRESS" name="email"
@@ -23,7 +23,7 @@ $user = $data['user']->fetch_assoc();
                 <option value="other" <?php echo ($user['gender'] == 'other') ? 'selected' : ''; ?>>อื่นๆ</option>
             </select>
             <div class="text-center mt-4">
-                <button type="button" class="buttonecustomedit">บันทึก</button>
+                <button type="submit" class="buttonecustomedit">บันทึก</button>
                 <a href="/profile">
                     <button type="button" class="buttonedit ms-4">ยกเลิก</button>
                 </a>

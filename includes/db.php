@@ -3,10 +3,11 @@
 function getConnection():mysqli
 {
     $hostname = 'localhost';
-    $dbName = 'project_web';
-    $username = 'project_web';
-    $password = '123***';
+    $dbName = 'projectwe1_';
+    $username = 'projectwe1_user';
+    $password = '9gwUq8Me4!qB_j4';
     $conn = new mysqli($hostname, $username, $password, $dbName);
+    mysqli_set_charset($conn, 'utf8mb4');
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }

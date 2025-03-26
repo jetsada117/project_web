@@ -5,6 +5,17 @@ function insertEnroll(int $uid, int $eid): bool
     $conn = getConnection();
     $status = 'pending';
 
+    $check = "SELECT * FROM events WHERE eid = ? and created_by = ?";
+    $stmt = $conn->prepare($check);
+    $stmt->bind_param("ii",$eid, $uid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        return false;
+    }
+
+
     $check = "SELECT * FROM enroll WHERE uid = ? AND eid = ?";
     $stmt = $conn->prepare($check);
     $stmt->bind_param("ii", $uid, $eid);
@@ -143,10 +154,10 @@ function getTopFeedbackEventByUser($uid)
             COUNT(e.uid) AS total_participants
             FROM enroll e
             JOIN events ev ON e.eid = ev.eid
-            WHERE e.feedback IS NOT NULL AND ev.created_by = ?
+            WHERE ev.created_by = ?
+            and status = 'accepted'
             GROUP BY e.eid, ev.name
-            ORDER BY average_rating DESC
-            LIMIT 5";
+            ORDER BY average_rating DESC";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $uid);
     $stmt->execute();

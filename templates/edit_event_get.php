@@ -41,7 +41,7 @@ $event = $data['event']->fetch_assoc();
                 <input type="file" class="form-control" name="image_more[]" multiple>
             </div>
             <div class="d-flex justify-content-center gap-3 mt-3">
-                <button type="button" class="buttonCreateedit">แก้ไข</button>
+                <button type="submit" class="buttonCreateedit">แก้ไข</button>
                 <button type="reset" class="buttonCreate">ล้างข้อมูล</button>
             </div>
         </form>

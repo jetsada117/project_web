@@ -28,7 +28,11 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
         $event = getAllEvents();
         renderView('events_get', ['events' => $event]);
     } else {
-        echo "เกิดข้อผิดพลาดในการอัปเดตอีเวนต์!";
+        $result = getEventById($eid);
+
+        if ($result) {
+            renderView('edit_event_get', ['event' => $result]);
+        }
     }
 } else {
     $result = updateEventWithoutImage($name, $description, $category, $event_date, $start_time, $eid);
@@ -37,6 +41,10 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
         $event = getAllEvents();
         renderView('events_get', ['events' => $event]);
     } else {
-        echo "เกิดข้อผิดพลาดในการอัปเดตอีเวนต์!";
+        $result = getEventById($eid);
+
+        if ($result) {
+            renderView('edit_event_get', ['event' => $result]);
+        }
     }
 }

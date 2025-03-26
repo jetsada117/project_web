@@ -2,7 +2,7 @@
 function getAllEvents()
 {
     $conn = getConnection();
-    $sql = "SELECT * FROM events";
+    $sql = "SELECT * FROM events ORDER BY event_date, start_time";
     $result = $conn->query($sql);
     return $result;
 }

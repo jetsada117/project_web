@@ -10,7 +10,4 @@ $rating = ($suitability+$duration)/2;
 $result = updateUserFeedback($comment, $rating, $uid, $eid);
 
 $history = getHistoryEnrolL($uid);
-
-if ($result) {
-    renderView('history_get', ['history' => $history]);
-}
+renderView('history_get', ['history' => $history]);

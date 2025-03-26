@@ -1,3 +1,8 @@
+<div id="customAlert" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #333; color: white; padding: 20px; border-radius: 5px;">
+    <span id="alertMessage"></span>
+    <button onclick="closeAlert()" style="margin-left: 10px; background: red; color: white; border: none; padding: 5px; cursor: pointer;">ปิด</button>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js"></script>
@@ -5,6 +10,17 @@
 <script>
     function confirmSubmission() {
         return confirm("Are you sure you want to confirm?");
+    }
+</script>
+
+<script>
+    function showCustomAlert(message) {
+        document.getElementById("alertMessage").innerHTML = message;
+        document.getElementById("customAlert").style.display = "block";
+    }
+
+    function closeAlert() {
+        document.getElementById("customAlert").style.display = "none";
     }
 </script>
 
