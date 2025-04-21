@@ -1,4 +1,13 @@
 <?php
+function getUsersWithoutId(int $uid) {
+    $conn = getConnection();
+    $sql = "SELECT * FROM users WHERE uid != ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $uid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result;
+}
 
 function getUserById(int $uid)
 {
@@ -83,4 +92,15 @@ function updateUserWithImagePath($uid, $user_name, $email, $phone, $gender, $dob
     $result = $stmt->execute();
 
     return $stmt->affected_rows > 0;
+}
+
+function searchUserWithoutId(string $search, int $uid) {
+    $conn = getConnection();
+    $sql = "SELECT * FROM users WHERE uid != ? AND (user_name LIKE? OR email LIKE?)";
+    $stmt = $conn->prepare($sql);
+    $search_pattern = "%{$search}%";
+    $stmt->bind_param("iss", $uid, $search_pattern, $search_pattern);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result;
 }

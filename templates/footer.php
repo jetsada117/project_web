@@ -102,10 +102,9 @@
     function stopCamera() {
         const video = document.getElementById('camera');
 
-        // Reset video element to initial state
         video.style.display = 'block';
-        video.style.backgroundColor = 'white'; // Set background to white
-        video.srcObject = null; // Clear the video source
+        video.style.backgroundColor = 'white'; 
+        video.srcObject = null;
 
         scanning = false;
         clearInterval(interval);

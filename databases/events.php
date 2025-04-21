@@ -39,9 +39,34 @@ function getEventById(int $eid)
 function getAllEventById(int $id)
 {
     $conn = getConnection();
-    $sql = "SELECT DISTINCT * FROM events WHERE created_by = ?";
+    $sql = "SELECT *
+            FROM events 
+            WHERE created_by = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result;
+}
+
+function countEventsGroup()
+{
+    $conn = getConnection();
+    $sql = "SELECT created_by, COUNT(*) as total_count 
+            FROM events 
+            GROUP BY created_by";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result;
+}
+
+function countEventsById(int $uid)
+{
+    $conn = getConnection();
+    $sql = "SELECT COUNT(*) as total_count FROM events WHERE created_by =?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $uid);
     $stmt->execute();
     $result = $stmt->get_result();
     return $result;

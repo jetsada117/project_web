@@ -20,7 +20,7 @@ $events = $data['events'];
                     <a href="/detail_event?eid=<?= $row['eid'] ?>">
                         <div class="activity-cardAct1">
                             <img src="<?php echo htmlspecialchars($row['image']); ?>">
-                            <h4 class="mt-3 mb-2 fw-bolder text-dark"><?php echo htmlspecialchars($row['name']); ?></h4>
+                            <h4 class="mt-3 fw-bolder text-dark"><?php echo htmlspecialchars($row['name']); ?></h4>
                             <p class="text-wrap">
                                 <?php echo nl2br(htmlspecialchars($row['description'])); ?><br>
                                 วันที่: <?php echo date("d F Y", strtotime($row['event_date'])); ?><br>

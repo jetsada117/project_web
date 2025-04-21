@@ -1,0 +1,120 @@
+function handleScannedUrl(url) { // รับ url เพื่อทำการเปิด url นั่น
+        const resultText = document.getElementById('result');
+        resultText.textContent = "สแกนสำเร็จ: " + url;
+
+        window.location.href = url;
+    }
+
+    async function startCamera() {
+        const video = document.getElementById('camera');	// นำภาพจากล้องไปแสดงในตัวแปร camera
+        const canvas = document.getElementById('canvas');	// ประมวลผลภาพ
+        const ctx = canvas.getContext('2d');			// ประมวลผลภาพเป็น 2D
+        const resultText = document.getElementById('result');	// สร้างตัวแปรมารับค่าช่องแสดงผลลัพธ์
+
+        try {
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {	// navigator.mediaDevices = เช็คว่าอุปกรณ์มี media หรือไม่, navigator.mediaDevices.getUserMedia = ขอเข้าถึงกล้อง
+                videoStream = await navigator.mediaDevices.getUserMedia({ 		 // สร้างตัวแปรมารับภาพจากกล้อง
+                    video: {
+                        facingMode: 'environment'				// กำหนดค่าเป็นกล้องหลังในมือถือ
+                    }
+                });
+                video.srcObject = videoStream;					// นำวิดีโอไปแสดงในหน้าเว็ป
+                video.style.display = 'block';					// สร้างช่องวิดีโอเป็นบล็อค
+                video.style.backgroundColor = 'transparent'; 			// กำหนดสี
+
+                video.onloadedmetadata = function() {
+                    document.getElementById('startBtn').disabled = true;	// ปิดปุ่ม start
+                    document.getElementById('stopBtn').disabled = false;	// เปิดปุ่ม stop
+                    scanning = true; 						// เปิดการแสกน QR
+
+                    interval = setInterval(() => {
+                        if (!scanning) return;					// ถ้าการแสกน false ให้หยุดทำงาน			
+
+                        if (video.readyState === video.HAVE_ENOUGH_DATA) {	// เช็คว่าข้อมูลพร้อมต่อการใช้งานรึยัง
+                            canvas.width = video.videoWidth;
+                            canvas.height = video.videoHeight;
+                            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+                            if (typeof jsQR === 'function') {			// ตรวจสอบว่าดึงฟังก์ชัน jsqr มาใช้งานได้ไหม
+                                const code = jsQR(imageData.data, imageData.width, imageData.height);	// นำภาพมาประมวลผล
+
+                                if (code) {					// เช็คว่าเป็น qr จริงๆใช้ไหม
+                                    stopCamera();
+                                    handleScannedUrl(code.data);
+                                }
+                            } else {
+                                resultText.textContent = "ไลบรารี jsQR ไม่ได้ถูกโหลด";
+                                stopCamera();
+                            }
+                        }
+                    }, 500);
+                };
+            } else {
+                document.getElementById('result').textContent =
+                    "กรุณาใช้งานผ่าน HTTPS เพื่อเข้าถึงกล้อง";
+            }
+
+        } catch (error) {
+            console.error("Error accessing camera:", error);
+            resultText.textContent = "ไม่สามารถเข้าถึงกล้องได้: " + error.message;
+        }
+    }
+
+    function stopCamera() {
+        const video = document.getElementById('camera');
+
+        video.style.display = 'block';
+        video.style.backgroundColor = 'white'; 
+        video.srcObject = null;
+
+        scanning = false;
+        clearInterval(interval);
+
+        if (videoStream) {
+            videoStream.getTracks().forEach(track => track.stop());
+            videoStream = null;
+        }
+
+        document.getElementById('startBtn').disabled = false;
+        document.getElementById('stopBtn').disabled = true;
+    }
+
+    function scanQRFromFile(file) {
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const resultText = document.getElementById('result');
+
+        if (typeof jsQR !== 'function') {
+            resultText.textContent = "ไลบรารี jsQR ไม่ได้ถูกโหลด";
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const img = new Image();
+            img.onload = function() {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+                if (code) {
+                    handleScannedUrl(code.data);
+                } else {
+                    resultText.textContent = "ไม่พบ QR code ในรูปภาพที่อัปโหลด";
+                }
+            };
+            img.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    document.getElementById('startBtn').addEventListener('click', startCamera);
+    document.getElementById('stopBtn').addEventListener('click', stopCamera);
+    document.getElementById('fileInput').addEventListener('change', function(e) {
+        if (e.target.files && e.target.files[0]) {
+            scanQRFromFile(e.target.files[0]);
+        }
+    });
